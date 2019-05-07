@@ -22,7 +22,7 @@ public class AccountController {
     PasswordEncoder encoder;
 
     @GetMapping("/signup")
-    public String getSighup() {
+    public String getSignup() {
         return "signup";
     }
 
@@ -54,7 +54,7 @@ public class AccountController {
 
         repo.save(user);
 
-        return "/login";
+        return "/signup";
 
     }
 
