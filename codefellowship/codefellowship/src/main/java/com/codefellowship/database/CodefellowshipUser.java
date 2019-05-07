@@ -30,6 +30,8 @@ public class CodefellowshipUser implements UserDetails {
 
     private String lastName;
 
+    private String pronouns;
+
     private Date dateOfBirth;
 
     private String bio;
@@ -137,5 +139,13 @@ public class CodefellowshipUser implements UserDetails {
 
     public long getId() {
         return id;
+    }
+
+    public String getPronouns() {
+        return pronouns;
+    }
+
+    public void setPronouns(String pronouns) {
+        this.pronouns = pronouns;
     }
 }

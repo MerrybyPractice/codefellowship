@@ -34,6 +34,7 @@ public class AccountController {
             @RequestParam Date startedProgramming,
             @RequestParam String firstName,
             @RequestParam String lastName,
+            @RequestParam String pronouns,
             @RequestParam Date dateOfBirth,
             @RequestParam String bio,
             @RequestParam String os
@@ -46,6 +47,7 @@ public class AccountController {
         user.setStartedProgramming(startedProgramming);
         user.setFirstName(firstName);
         user.setLastName(lastName);
+        user.setPronouns(pronouns);
         user.setDateOfBirth(dateOfBirth);
         user.setBio(bio);
         user.setOs(os);
