@@ -1,4 +1,7 @@
 package com.codefellowship.database;
 
-public interface CodefellowshipUserRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface CodefellowshipUserRepository extends JpaRepository<CodefellowshipUser, Long> {
+    CodefellowshipUser findByUsername(String username);
 }

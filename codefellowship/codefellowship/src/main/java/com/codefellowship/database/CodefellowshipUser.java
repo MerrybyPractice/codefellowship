@@ -30,12 +30,11 @@ public class CodefellowshipUser implements UserDetails {
 
     private String lastName;
 
-    private String dateOfBirth;
+    private Date dateOfBirth;
 
     private String bio;
 
     private String os;
-
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -44,31 +43,99 @@ public class CodefellowshipUser implements UserDetails {
 
     @Override
     public String getPassword() {
-        return null;
+        return this.password;
     }
 
     @Override
     public String getUsername() {
-        return null;
+        return this.username;
     }
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return true;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getFavoriteProgrammingLanguage() {
+        return favoriteProgrammingLanguage;
+    }
+
+    public void setFavoriteProgrammingLanguage(String favoriteProgrammingLanguage) {
+        this.favoriteProgrammingLanguage = favoriteProgrammingLanguage;
+    }
+
+    public Date getStartedProgramming() {
+        return startedProgramming;
+    }
+
+    public void setStartedProgramming(Date startedProgramming) {
+        this.startedProgramming = startedProgramming;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public Date getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public String getBio() {
+        return bio;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
+    }
+
+    public String getOs() {
+        return os;
+    }
+
+    public void setOs(String os) {
+        this.os = os;
+    }
+
+    public long getId() {
+        return id;
     }
 }
