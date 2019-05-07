@@ -8,7 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.util.Collection;
-import java.util.Date;
 
 @Entity
 public class CodefellowshipUser implements UserDetails {
@@ -24,7 +23,7 @@ public class CodefellowshipUser implements UserDetails {
 
     private String favoriteProgrammingLanguage;
 
-    private Date startedProgramming;
+    private String startedProgramming;
 
     private String firstName;
 
@@ -32,7 +31,7 @@ public class CodefellowshipUser implements UserDetails {
 
     private String pronouns;
 
-    private Date dateOfBirth;
+    private String dateOfBirth;
 
     private String bio;
 
@@ -89,11 +88,11 @@ public class CodefellowshipUser implements UserDetails {
         this.favoriteProgrammingLanguage = favoriteProgrammingLanguage;
     }
 
-    public Date getStartedProgramming() {
+    public String getStartedProgramming() {
         return startedProgramming;
     }
 
-    public void setStartedProgramming(Date startedProgramming) {
+    public void setStartedProgramming(String startedProgramming) {
         this.startedProgramming = startedProgramming;
     }
 
@@ -113,11 +112,11 @@ public class CodefellowshipUser implements UserDetails {
         this.lastName = lastName;
     }
 
-    public Date getDateOfBirth() {
+    public String getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
+    public void setDateOfBirth(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 

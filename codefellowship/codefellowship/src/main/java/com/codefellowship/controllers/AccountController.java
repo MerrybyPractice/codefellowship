@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.Date;
-
 @Controller
 public class AccountController {
 
@@ -31,11 +29,11 @@ public class AccountController {
             @RequestParam String username,
             @RequestParam String password,
             @RequestParam String favoriteProgrammingLanguage,
-            @RequestParam Date startedProgramming,
+            @RequestParam String startedProgramming,
             @RequestParam String firstName,
             @RequestParam String lastName,
             @RequestParam String pronouns,
-            @RequestParam Date dateOfBirth,
+            @RequestParam String dateOfBirth,
             @RequestParam String bio,
             @RequestParam String os
     ) {

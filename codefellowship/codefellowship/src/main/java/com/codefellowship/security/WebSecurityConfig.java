@@ -46,7 +46,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/signup*").permitAll()
                 .antMatchers("/style.css").permitAll()
                 .anyRequest().authenticated()
-//
+
                 // configure login
                 .and()
                 .formLogin()
@@ -63,5 +63,4 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .deleteCookies("JSESSIONID")
         ;
     }
-
 }
