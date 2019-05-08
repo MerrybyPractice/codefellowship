@@ -10,7 +10,7 @@ import java.util.List;
 @Entity
 public class CodefellowshipUser implements UserDetails {
 
-    @OneToMany(mappedBy = "Post")
+    @OneToMany(mappedBy = "user")
     List<Post> posts;
 
     @Id

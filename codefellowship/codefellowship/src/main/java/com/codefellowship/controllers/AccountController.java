@@ -2,6 +2,7 @@ package com.codefellowship.controllers;
 
 import com.codefellowship.database.CodefellowshipUser;
 import com.codefellowship.database.CodefellowshipUserRepository;
+import com.codefellowship.database.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,9 @@ public class AccountController {
 
     @Autowired
     CodefellowshipUserRepository repo;
+
+    @Autowired
+    PostRepository postRepo;
 
     @Autowired
     PasswordEncoder encoder;
@@ -83,6 +87,19 @@ public class AccountController {
         throw new Exception();
     }
 
+    @GetMapping("/profile/{id}")
+    public String myProfile(@RequestParam Long id,
+                            Model model) {
+        Optional user = this.repo.findById(id);
+
+        if (user.isPresent()) {
+            model.addAttribute(user);
+        }
+        return "userdetails";
+    }
+
 //    @GetMapping("/myprofile")
 //    public String viewMyAccount()
+
+
 }

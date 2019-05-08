@@ -1,6 +1,7 @@
 package com.codefellowship.controllers;
 
 import com.codefellowship.database.CodefellowshipUserRepository;
+import com.codefellowship.database.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,7 +14,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class CodefellowshipController {
 
     @Autowired
+    PostRepository repo;
+
+    @Autowired
     CodefellowshipUserRepository userRepo;
+
 
     //base route with splash page and basic info
     @GetMapping("")
