@@ -20,7 +20,5 @@ public class CodefellowshipController {
         return "splashpage";
     }
 
-    //single account info page
-
 
 }

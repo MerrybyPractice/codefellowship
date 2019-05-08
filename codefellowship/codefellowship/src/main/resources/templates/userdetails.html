@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <title>Codefellowship</title>
+</head>
+<body>
+
+<main id="user details">
+    <h1 id="users full name" th:text="${user.firstName} + ${user.lastName}"></h1>
+    <h2 id="users pronouns" th:text="$user.pronouns}"></h2>
+    <section>
+        <div id="users favorite programming language" th:text="${user.favoriteProgrammingLanguage}"></div>
+        <div id="approximate time user began programming" th:text="${user.startedProgramming}"></div>
+        <div id="users operating system" th:text="${user.os}"></div>
+        <div id="user biography" th:text="${user.bio}"></div>
+    </section>
+</main>
+</body>
+</html>

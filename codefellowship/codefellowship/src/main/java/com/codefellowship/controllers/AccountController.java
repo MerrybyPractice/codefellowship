@@ -5,12 +5,13 @@ import com.codefellowship.database.CodefellowshipUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @Controller
+@RequestMapping("/users")
 public class AccountController {
 
     @Autowired
@@ -65,5 +66,19 @@ public class AccountController {
     @ResponseBody
     public String getLoginError() {
         return "Username or Password not found.";
+    }
+
+    //single account info page
+    @GetMapping("/{id}")
+    public String viewSingleUser(@PathVariable Long id,
+                                 Model model) throws Exception {
+        Optional<CodefellowshipUser> foundUser = repo.findById(id);
+
+        if (foundUser.isPresent()) {
+            model.addAttribute("user", foundUser.get());
+            return "userdetails";
+        }
+
+        throw new Exception();
     }
 }
