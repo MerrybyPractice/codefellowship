@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/users")
 public class AccountController {
 
     @Autowired
@@ -53,8 +52,10 @@ public class AccountController {
 
         repo.save(user);
 
-        return "/signup";
+//        Authentication authentication = new UsernamePasswordAuthenticationToken(user, null, new ArrayList<>());
+//        SecurityContextHolder.getContext().setAuthentication(authentication);
 
+        return "/signup";
     }
 
     @GetMapping("/login")
@@ -81,4 +82,7 @@ public class AccountController {
 
         throw new Exception();
     }
+
+//    @GetMapping("/myprofile")
+//    public String viewMyAccount()
 }
