@@ -3,43 +3,36 @@ package com.codefellowship.database;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Collection;
+import java.util.List;
 
 @Entity
 public class CodefellowshipUser implements UserDetails {
 
+    @OneToMany(mappedBy = "user")
+    List<Post> posts;
+
     @Id
     @GeneratedValue
     private long id;
-
     @Column(unique = true)
     private String username;
-
     private String password;
-
     private String favoriteProgrammingLanguage;
-
     private String startedProgramming;
-
     private String firstName;
-
     private String lastName;
-
     private String pronouns;
-
     private String dateOfBirth;
-
     private String bio;
-
     private String os;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
+//        List<GrantedAuthority> list = new ArrayList<>();
         return null;
+
     }
 
     @Override

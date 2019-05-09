@@ -3,6 +3,7 @@ package com.codefellowship.security;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -42,6 +43,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 // setup authorized pages
                 .authorizeRequests()
                 .antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/anonymous*").anonymous()
                 .antMatchers("/login*").permitAll()
                 .antMatchers("/signup*").permitAll()
                 .antMatchers("/style.css").permitAll()
@@ -62,5 +64,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutSuccessUrl("/login")
                 .deleteCookies("JSESSIONID")
         ;
+    }
+
+    @Bean
+    public AuthenticationManager authenticationManagerbean() throws Exception {
+        return super.authenticationManagerBean();
     }
 }

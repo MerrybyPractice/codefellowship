@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <link rel="stylesheet" th:href="@{/style.css}"/>
+    <title>Make a Post on Codefellowship</title>
+</head>
+<body>
+<main>
+
+    <form action="/createpost" method="post">
+        <input id="title" name="title" placeholder="Title" type="text">
+        <input id="body" name="body" placeholder="What do you want to say?" required type="text">
+        <input id="timestamp" name="timestamp" readonly="true" required type="datetime-local">
+        <input autocomplete="username" id="user" name="user" readonly="true" required type="text">
+        <button type="submit"> Say it!</button>
+    </form>
+</main>
+</body>
+</html>
