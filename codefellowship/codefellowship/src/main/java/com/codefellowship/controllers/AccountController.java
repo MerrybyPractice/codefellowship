@@ -4,6 +4,9 @@ import com.codefellowship.database.CodefellowshipUser;
 import com.codefellowship.database.CodefellowshipUserRepository;
 import com.codefellowship.database.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,7 +14,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.view.RedirectView;
 
+import java.security.Principal;
+import java.util.ArrayList;
 import java.util.Optional;
 
 @Controller
@@ -32,7 +38,7 @@ public class AccountController {
     }
 
     @PostMapping("/signup")
-    public String postSignup(
+    public RedirectView postSignup(
             @RequestParam String username,
             @RequestParam String password,
             @RequestParam String favoriteProgrammingLanguage,
@@ -59,10 +65,11 @@ public class AccountController {
 
         repo.save(user);
 
-//        Authentication authentication = new UsernamePasswordAuthenticationToken(user, null, new ArrayList<>());
-//        SecurityContextHolder.getContext().setAuthentication(authentication);
+        Authentication authentication = new UsernamePasswordAuthenticationToken(user, null, new ArrayList<>());
+        SecurityContextHolder.getContext().setAuthentication(authentication);
 
-        return "/signup";
+
+        return new RedirectView("" + user.getId());
     }
 
     @GetMapping("/login")
@@ -70,13 +77,18 @@ public class AccountController {
         return "login";
     }
 
-    @PostMapping("/login")
-    public String postSuccessfulLogIn() {
-        if (getLogin() != null) {
-            return "redirect:" + CodefellowshipUser.getId();
-        } else {
-            return "Username or Password not found.";
-        }
+    @GetMapping("/loginpath")
+    public RedirectView postSuccessfulLogIn(Principal principal) {
+
+
+        CodefellowshipUser userName = repo.findByUsername(principal.getName());
+
+        long userId = (userName.getId());
+
+        return new RedirectView("profile/" + userId);
+//        } else {
+//            return "Username or Password not found.";
+//        }
     }
 
     //single account info page
