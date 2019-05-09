@@ -8,7 +8,7 @@ public class Followers {
     @Id
     @GeneratedValue
     public long id;
-    
+
     @ManyToOne(fetch = FetchType.EAGER)
     public CodefellowshipUser fromUser;
 
