@@ -4,19 +4,18 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 @Entity
 public class CodefellowshipUser implements UserDetails {
 
-    @OneToMany(mappedBy = "fromUser")
-    public List<Followers> following;
-    @OneToMany(mappedBy = "toUser")
-    public List<Followers> followers;
     @OneToMany(mappedBy = "user")
-    List<Post> posts;
+    private List<Post> posts;
+    @OneToMany(mappedBy = "fromUser")
+    private List<Followers> following;
+    @OneToMany(mappedBy = "toUser")
+    private List<Followers> followers;
     @Id
     @GeneratedValue
     private long id;
@@ -32,9 +31,41 @@ public class CodefellowshipUser implements UserDetails {
     private String bio;
     private String os;
 
-    private CodefellowshipUser() {
-        this.followers = new ArrayList<>();
-        this.following = new ArrayList<>();
+    public CodefellowshipUser() {
+        this.followers = getFollowers();
+        this.following = getFollowing();
+    }
+
+    public static long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public List<Followers> getFollowing() {
+        return following;
+    }
+
+    public void setFollowing(List<Followers> following) {
+        this.following = following;
+    }
+
+    public List<Followers> getFollowers() {
+        return followers;
+    }
+
+    public void setFollowers(List<Followers> followers) {
+        this.followers = followers;
+    }
+
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
     }
 
     @Override
@@ -137,10 +168,6 @@ public class CodefellowshipUser implements UserDetails {
 
     public void setOs(String os) {
         this.os = os;
-    }
-
-    public long getId() {
-        return id;
     }
 
     public String getPronouns() {
