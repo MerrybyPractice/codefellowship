@@ -4,15 +4,19 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 @Entity
 public class CodefellowshipUser implements UserDetails {
 
+    @OneToMany(mappedBy = "fromUser")
+    public List<Followers> following;
+    @OneToMany(mappedBy = "toUser")
+    public List<Followers> followers;
     @OneToMany(mappedBy = "user")
     List<Post> posts;
-
     @Id
     @GeneratedValue
     private long id;
@@ -28,7 +32,13 @@ public class CodefellowshipUser implements UserDetails {
     private String bio;
     private String os;
 
+    private CodefellowshipUser() {
+        this.followers = new ArrayList<>();
+        this.following = new ArrayList<>();
+    }
+
     @Override
+
     public Collection<? extends GrantedAuthority> getAuthorities() {
 //        List<GrantedAuthority> list = new ArrayList<>();
         return null;
