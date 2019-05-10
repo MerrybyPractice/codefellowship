@@ -11,8 +11,11 @@ import java.util.List;
 public class CodefellowshipUser implements UserDetails {
 
     @OneToMany(mappedBy = "user")
-    List<Post> posts;
-
+    private List<Post> posts;
+    @OneToMany(mappedBy = "fromUser")
+    private List<Followers> following;
+    @OneToMany(mappedBy = "toUser")
+    private List<Followers> followers;
     @Id
     @GeneratedValue
     private long id;
@@ -28,7 +31,45 @@ public class CodefellowshipUser implements UserDetails {
     private String bio;
     private String os;
 
+    public CodefellowshipUser() {
+        this.followers = getFollowers();
+        this.following = getFollowing();
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public List<Followers> getFollowing() {
+        return following;
+    }
+
+    public void setFollowing(List<Followers> following) {
+        this.following = following;
+    }
+
+    public List<Followers> getFollowers() {
+        return followers;
+    }
+
+    public void setFollowers(List<Followers> followers) {
+        this.followers = followers;
+    }
+
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
+    }
+
     @Override
+
     public Collection<? extends GrantedAuthority> getAuthorities() {
 //        List<GrantedAuthority> list = new ArrayList<>();
         return null;
@@ -127,10 +168,6 @@ public class CodefellowshipUser implements UserDetails {
 
     public void setOs(String os) {
         this.os = os;
-    }
-
-    public long getId() {
-        return id;
     }
 
     public String getPronouns() {
