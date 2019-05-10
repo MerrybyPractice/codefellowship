@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.security.Principal;
-
 @Controller
 @RequestMapping("/")
 public class CodefellowshipController {
@@ -35,12 +33,13 @@ public class CodefellowshipController {
 
     //TODO Finish this shit
 
-    @GetMapping("/feed")
-
-    public String getFeed(Model model,
-                          Principal principal) {
-
-        return "feed";
-    }
+//    @GetMapping("/feed")
+//
+//    public String getFeed(Model model,
+//                          Principal principal) {
+//
+//
+//        return "feed";
+//    }
 
 }
