@@ -77,6 +77,7 @@ public class AccountController {
         return "login";
     }
 
+
     @GetMapping("/loginpath")
     public RedirectView postSuccessfulLogIn(Principal principal) {
 

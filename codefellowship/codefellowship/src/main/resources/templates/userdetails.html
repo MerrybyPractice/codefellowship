@@ -16,12 +16,13 @@
         <div id="users operating system" th:text="${user.os}"></div>
         <div id="user biography" th:text="${user.bio}"></div>
     </section>
-    <!--    <section id="user posts">-->
-    <!--        <div th:each="post : ${user.posts}"></div>-->
-    <!--        <h3 th:text="${post.title}"></h3>-->
-    <!--        <div th:text="${post.body}"></div>-->
-    <!--        <div th:text="${post.timestamp}"></div>-->
-    <!--    </section>-->
+
+    <section id="user posts">
+        <div th:each="post : ${user.posts}"></div>
+        <h3 th:text="${post.title}"></h3>
+        <div th:text="${post.body}"></div>
+        <div th:text="${post.timestamp}"></div>
+    </section>
 
 </main>
 </body>
