@@ -2,6 +2,7 @@ package com.codefellowship.controllers;
 
 import com.codefellowship.database.CodefellowshipUser;
 import com.codefellowship.database.CodefellowshipUserRepository;
+import com.codefellowship.database.Followers;
 import com.codefellowship.database.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -77,6 +78,7 @@ public class AccountController {
         return "login";
     }
 
+
     @GetMapping("/loginpath")
     public RedirectView postSuccessfulLogIn(Principal principal) {
 
@@ -116,8 +118,16 @@ public class AccountController {
         return "userdetails";
     }
 
-//    @GetMapping("/myprofile")
-//    public String viewMyAccount()
+    @PostMapping("/follow/{id}")
+    public RedirectView newFollow(@RequestParam Long id, Principal principal) {
+
+        CodefellowshipUser userName = repo.findByUsername(principal.getName());
+        CodefellowshipUser following = repo.findById(id).get();
+
+        new Followers(userName, following);
+
+        return new RedirectView("/profile" + id);
+    }
 
 
 }

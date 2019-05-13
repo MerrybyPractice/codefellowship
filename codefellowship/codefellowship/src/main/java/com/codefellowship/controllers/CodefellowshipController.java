@@ -31,4 +31,15 @@ public class CodefellowshipController {
         return "newpost";
     }
 
+    //TODO Finish this shit
+
+//    @GetMapping("/feed")
+//
+//    public String getFeed(Model model,
+//                          Principal principal) {
+//
+//
+//        return "feed";
+//    }
+
 }

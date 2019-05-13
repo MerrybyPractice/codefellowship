@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/401d3-bitmap-transformer" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/java-fundamentals" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/java-quotes" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/java_data_structures_and_algo" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/linter" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/songr" vcs="Git" />
+  </component>
+</project>

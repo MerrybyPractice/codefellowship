@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<body>
+
+<!--Navigation Bar-->
+<div th:fragment="navigation">
+    <section th:text="Welcome + ${user.name}"></section>
+    <a th:href="${/user.id}"> Home </a>
+    <a> Feed </a>
+    <a href="/perform_logout"> Log Out </a>
+</div>
+
+<!--Follow Button-->
+<div id="followDiv" th:fragment="Follow">
+    <a id="followLink" th:href="${/follow/{id}}"> Follow </a>
+</div>
+
+</body>
+</html>
