@@ -17,7 +17,7 @@
         <div id="user biography" th:text="${user.bio}"></div>
     </section>
 
-    <section id="user posts">
+    <section id="user posts" th:if="${user.posts.size() > 0}">
         <div th:each="post : ${user.posts}"></div>
         <h3 th:text="${post.title}"></h3>
         <div th:text="${post.body}"></div>
