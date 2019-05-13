@@ -108,25 +108,25 @@ public class AccountController {
     }
 
     @GetMapping("/profile/{id}")
-    public String myProfile(@RequestParam Long id,
+    public String myProfile(@PathVariable Long id,
                             Model model) {
         Optional user = this.repo.findById(id);
 
         if (user.isPresent()) {
-            model.addAttribute(user);
+            model.addAttribute("user", user.get());
         }
         return "userdetails";
     }
 
     @PostMapping("/follow/{id}")
-    public RedirectView newFollow(@RequestParam Long id, Principal principal) {
+    public RedirectView newFollow(@PathVariable Long id, Principal principal) {
 
         CodefellowshipUser userName = repo.findByUsername(principal.getName());
         CodefellowshipUser following = repo.findById(id).get();
 
         new Followers(userName, following);
 
-        return new RedirectView("/profile" + id);
+        return new RedirectView("/profile/" + id);
     }
 
 
